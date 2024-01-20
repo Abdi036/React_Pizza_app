@@ -70,15 +70,20 @@ function Header() {
 
 function Menu() {
   const pizzas = pizzaData;
+  const numPizza = pizzas.length;
+  // const numPizza = [];
   return (
     <main className="menu">
       <h2>Our menu</h2>
-
-      <div className="pizzas">
-        {pizzas.map((pizza) => (
-          <Pizza pizzaObj={pizza} key={pizza.name} />
-        ))}
-      </div>
+      {numPizza > 0 ? (
+        <div className="pizzas">
+          {pizzas.map((pizza) => (
+            <Pizza pizzaObj={pizza} key={pizza.name} />
+          ))}
+        </div>
+      ) : (
+        <p>We're closed for now please comeback😊😊😊</p>
+      )}
     </main>
   );
 }
