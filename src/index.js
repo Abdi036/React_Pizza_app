@@ -47,6 +47,7 @@ const pizzaData = [
   },
 ];
 
+// Main Component
 function App() {
   return (
     <div className="container">
