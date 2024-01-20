@@ -109,15 +109,22 @@ function Footer() {
 
   return (
     <footer className="footer">
-      {isOPen && (
-        <div className="order">
-          <p>
-            We're open until {closeHour}:00. Come and visit us or Order online.
-          </p>
-          <button className="btn">Order</button>
-        </div>
-      )}
+      {isOPen && <Order closeHour={closeHour} />}
     </footer>
+  );
+}
+
+// creating Order component
+
+function Order(props) {
+  return (
+    <div className="order">
+      <p>
+        We're open until {props.closeHour}:00. Come and visit us or Order
+        online.
+      </p>
+      <button className="btn">Order</button>
+    </div>
   );
 }
 
