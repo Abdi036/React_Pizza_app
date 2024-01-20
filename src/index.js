@@ -63,7 +63,7 @@ function Header() {
   const style = {};
   return (
     <header className="header">
-      <h1 style={style}>Fast React Pizza Co.</h1>
+      <h1 style={style}>Fast Delicious Pizza Co.</h1>
     </header>
   );
 }
@@ -75,12 +75,18 @@ function Menu() {
   return (
     <main className="menu">
       <h2>Our menu</h2>
+
       {numPizza > 0 ? (
-        <div className="pizzas">
-          {pizzas.map((pizza) => (
-            <Pizza pizzaObj={pizza} key={pizza.name} />
-          ))}
-        </div>
+        // using Fragment(start by <> and closed by </>)
+        <>
+          <p>Get your pizza and Enjoy the moment.</p>
+
+          <div className="pizzas">
+            {pizzas.map((pizza) => (
+              <Pizza pizzaObj={pizza} key={pizza.name} />
+            ))}
+          </div>
+        </>
       ) : (
         <p>We're closed for now please comeback😊😊😊</p>
       )}
@@ -88,14 +94,14 @@ function Menu() {
   );
 }
 
-function Pizza(props) {
+function Pizza({ pizzaObj }) {
   return (
     <div className="pizza">
-      <img src={props.pizzaObj.photoName} alt="Error" />
+      <img src={pizzaObj.photoName} alt="Error" />
       <div>
-        <h3>{props.pizzaObj.name}</h3>
-        <p>{props.pizzaObj.ingredients}</p>
-        <span>{props.pizzaObj.price}</span>
+        <h3>{pizzaObj.name}</h3>
+        <p>{pizzaObj.ingredients}</p>
+        <span>{pizzaObj.price}</span>
       </div>
     </div>
   );
@@ -115,14 +121,11 @@ function Footer() {
 }
 
 // creating Order component
-
-function Order(props) {
+// it's better to use Destructuring instead of Props
+function Order({ closeHour }) {
   return (
     <div className="order">
-      <p>
-        We're open until {props.closeHour}:00. Come and visit us or Order
-        online.
-      </p>
+      <p>We're open until {closeHour}:00. Come and visit us or Order online.</p>
       <button className="btn">Order</button>
     </div>
   );
